@@ -1,0 +1,10 @@
+co/empathy/academy/search/Query.class
+co/empathy/academy/search/Service/SearchServiceImpl.class
+co/empathy/academy/search/Controllers/HelloWorldController.class
+co/empathy/academy/search/Configuration/Config.class
+co/empathy/academy/search/Service/SearchEngineImpl.class
+co/empathy/academy/search/Controllers/SearchController.class
+co/empathy/academy/search/Request.class
+co/empathy/academy/search/Service/SearchEngine.class
+co/empathy/academy/search/Service/SearchService.class
+co/empathy/academy/search/SearchApplication.class
