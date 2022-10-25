@@ -1,6 +1,7 @@
 package co.empathy.academy.search.Service;
 
 
+import co.empathy.academy.search.Model.Response;
 import org.apache.http.HttpHost;
 
 import org.apache.http.util.EntityUtils;
@@ -9,8 +10,7 @@ import org.elasticsearch.client.RestClient;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+
 
 
 public class SearchEngineImpl implements SearchEngine {
@@ -31,20 +31,12 @@ public class SearchEngineImpl implements SearchEngine {
 
             String responseElastic= EntityUtils.toString(restClient.performRequest(request).getEntity());
             JSONObject jsonObject= new JSONObject(responseElastic);
-            String version=jsonObject.get("version").toString();
+            String clusterName=jsonObject.get("cluster_name").toString();
 
-
-            return jsonResponse(query,version);
+            return new Response(query,clusterName).getResponse();
         }
 
 
     }
-    private String jsonResponse (String query,String version)
-    {
-        Map<String, Object> map = new HashMap<>();
-        map.put("query", query);
-        map.put("clusterName", version);
-        return map.toString();
 
-    }
 }
