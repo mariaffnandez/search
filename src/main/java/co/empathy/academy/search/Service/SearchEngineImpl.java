@@ -1,6 +1,11 @@
 package co.empathy.academy.search.Service;
 
 
+import co.elastic.clients.elasticsearch.ElasticsearchClient;
+
+import co.elastic.clients.json.jackson.JacksonJsonpMapper;
+import co.elastic.clients.transport.ElasticsearchTransport;
+import co.elastic.clients.transport.rest_client.RestClientTransport;
 import co.empathy.academy.search.Model.Response;
 import org.apache.http.HttpHost;
 
@@ -17,23 +22,33 @@ public class SearchEngineImpl implements SearchEngine {
 
     // This method should make a request to Elasticsearch to retrieve search results
 
+
     @Override
     public String search(String query) throws IOException, InterruptedException {
         if (query == null) {
             throw new RuntimeException("Query is mandatory");
         } else {
-            //better to do this on config?
-            RestClient restClient = RestClient.builder(
-                    new HttpHost("localhost", 9200, "http")).build();
+            //creating the elasticsearchClient ¿better in config?
+            RestClient httpClient
+                    = RestClient.builder(new HttpHost("localhost",9200))
+                    .build();
+
+
+            ElasticsearchTransport transport= new RestClientTransport(httpClient,new JacksonJsonpMapper());
+            ElasticsearchClient elasticClient= new ElasticsearchClient(transport);
+
+            //calling the api
             Request request = new Request(
                     "GET",
                     "/");
+            String responseElastic= EntityUtils.toString(httpClient.performRequest(request).getEntity());
 
-            String responseElastic= EntityUtils.toString(restClient.performRequest(request).getEntity());
+            //getting the clustername
             JSONObject jsonObject= new JSONObject(responseElastic);
             String clusterName=jsonObject.get("cluster_name").toString();
 
-            return new Response(query,clusterName).getResponse();
+            return new Response().getResponseQueryClusterName(query,clusterName);
+
         }
 
 

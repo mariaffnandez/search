@@ -26,7 +26,7 @@ class ControllersTest {
     @Test
     void searchQuery() throws Exception{
         String query= "query";
-        String queryResponse= new Response(query,"docker-cluster").getResponse();
+        String queryResponse= new Response().getResponseQueryClusterName(query,"docker-cluster");
         mvc.perform(MockMvcRequestBuilders.get("/search?query=query"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(queryResponse));

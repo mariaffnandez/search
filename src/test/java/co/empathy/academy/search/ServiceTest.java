@@ -23,7 +23,7 @@ public class ServiceTest {
 
     void givenQueryWithResults_whenSearch_thenReturnResponse() throws IOException, InterruptedException {
         String query = "query";
-        String expectedResponse= new Response(query, "docker").getResponse();
+        String expectedResponse= new Response().getResponseQueryClusterName(query, "docker");
         SearchEngine searchEngine = mock(SearchEngine.class);
         given(searchEngine.search(query)).willReturn(expectedResponse);
 

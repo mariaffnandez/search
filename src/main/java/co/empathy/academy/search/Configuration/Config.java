@@ -4,6 +4,7 @@ import co.empathy.academy.search.Service.SearchEngine;
 import co.empathy.academy.search.Service.SearchEngineImpl;
 import co.empathy.academy.search.Service.SearchService;
 import co.empathy.academy.search.Service.SearchServiceImpl;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -20,4 +21,8 @@ public class Config {
     public SearchService searchService(SearchEngine searchEngine) {
         return new SearchServiceImpl(searchEngine);
     }
+
+
+
+
 }

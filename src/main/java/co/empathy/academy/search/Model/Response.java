@@ -7,18 +7,12 @@ import java.util.Map;
 
 
 public class Response {
-    private String _query;
-    private String _clusterName;
 
-    public Response(String query, String clusterName){
-        this._query = query;
-        this._clusterName= clusterName;
-    }
-    public String getResponse()
+    public String getResponseQueryClusterName(String query, String clusterName)
     {
         Map<String, Object> map = new HashMap<>();
-        map.put("query", _query);
-        map.put("clusterName", _clusterName);
+        map.put("query", query);
+        map.put("clusterName", clusterName);
         return map.toString();
 
     }
