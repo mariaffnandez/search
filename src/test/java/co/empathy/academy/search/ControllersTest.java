@@ -1,6 +1,6 @@
 package co.empathy.academy.search;
 
-import co.empathy.academy.search.Model.Response;
+import co.empathy.academy.search.Model.JSONResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -26,7 +26,7 @@ class ControllersTest {
     @Test
     void searchQuery() throws Exception{
         String query= "query";
-        String queryResponse= new Response().getResponseQueryClusterName(query,"docker-cluster");
+        String queryResponse= new JSONResponse().getResponseQueryClusterName(query,"docker-cluster");
         mvc.perform(MockMvcRequestBuilders.get("/search?query=query"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(queryResponse));

@@ -6,4 +6,4 @@ co/empathy/academy/search/Controllers/SearchController.class
 co/empathy/academy/search/Service/SearchEngine.class
 co/empathy/academy/search/Service/SearchService.class
 co/empathy/academy/search/SearchApplication.class
-co/empathy/academy/search/Model/Response.class
+co/empathy/academy/search/Model/JSONResponse.class

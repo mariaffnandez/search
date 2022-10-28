@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class Response {
+public class JSONResponse {
 
     public String getResponseQueryClusterName(String query, String clusterName)
     {
@@ -14,6 +14,7 @@ public class Response {
         map.put("query", query);
         map.put("clusterName", clusterName);
         return map.toString();
+
 
     }
 

@@ -1,6 +1,6 @@
 package co.empathy.academy.search;
 
-import co.empathy.academy.search.Model.Response;
+import co.empathy.academy.search.Model.JSONResponse;
 import co.empathy.academy.search.Service.SearchEngine;
 import co.empathy.academy.search.Service.SearchService;
 import co.empathy.academy.search.Service.SearchServiceImpl;
@@ -23,7 +23,7 @@ public class ServiceTest {
 
     void givenQueryWithResults_whenSearch_thenReturnResponse() throws IOException, InterruptedException {
         String query = "query";
-        String expectedResponse= new Response().getResponseQueryClusterName(query, "docker");
+        String expectedResponse= new JSONResponse().getResponseQueryClusterName(query, "docker");
         SearchEngine searchEngine = mock(SearchEngine.class);
         given(searchEngine.search(query)).willReturn(expectedResponse);
 
